@@ -29,3 +29,7 @@ __Get-FileHash__:
 __Using Powershell__: 
   * Get-Childiten env:
   * dir env:
+
+### HW:
+Variables, values & type
+Exercises - Ninja Level 1
