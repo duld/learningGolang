@@ -34,13 +34,14 @@ __Using Powershell__:
 Variables, values & type
 Exercises - Ninja Level 1
 
-## Variales Values and Type
-#### Playground
+## __Variales Values and Type__
+### __Playground__
 We have access to an online go playground @ play.golang.org where we can test code and share the code by URL.
 
 To output text to the user in the console/terminal we can use the go package 'fmt' or format.
 
-####  Hello World
+---
+###  __Hello World__
 Go files need to have a package declaration at the top of the file. A go program needs to have a file with package main and a function named main.
 
 We can import other go packages using the import keyword.
@@ -50,26 +51,29 @@ In go, there is no 'public' or 'private'. There is 'exported', 'not exported', '
 #### Throwing away return values in go
 the underscore ( _ ) value in go alows us to capture a return from a function and to signal to go, that the we do not need to hold onto the value. This character is called the __blank identifier__.
 
+
 #### Go documentation - triple dots (...)
 The triple dots in the go documentation signals that the function can take any number of arguments.
 
-#### Short Declaration Operator
+---
+### Short Declaration Operator
 syntax in go to concisely declare and assign a value to a variable. The short declaration operator can only be used inside of a code block.
 
 __keywords__
   * these are words that ar reserved for use by Go.
 __operator__
   * a character or short character sequence that represents an action.
-__operand__
   * the values being operated on.
 __statement__
   * the smallest standalone element of an imperative programming language that expresses some action.
 __expression__
   * a combination of one or more explicit values, operators and functions that the programming language interprets to produce another value.
 
+---
 ### The Var Keyword
 If you want to have a variable that has package level scope, you can declare and initialize the variable outside of any function using the __var__ keyword.
 
+---
 ### Exploring Type
 Go is a statically typed language. When you declare a variable, the variable will only be able to hold values of the declared type.
 
@@ -84,7 +88,34 @@ either a basic type or built-in type. These are types that come with the program
 #### Composite Data Types
 A data type that is made up of other data types. The act of constructing a composite type is known as composition.
 
+---
 ### Zero Value
 every type of go has a 'zero value'. If we have declared but not assigned an initial value, go will set one for us.
 
-#### The fmt package
+---
+### The fmt package
+* __Println:__ Outputs a string to the terminal and appends a newline
+* __Printf:__ Outputs a formatted string to the terminal, similar to printf in other languages.
+* __Print:__ Outputs a sting to the terminal.
+* __Sprint:__ Formats any number of inputs and returns the resulting string.
+* __Sprintf:__ Formats any number of inputs using supplied format speccifier and returns the string.
+* __Sprintln:__ Formats any number of inputs, appends a newline to the result and returns the string.
+
+---
+### Creating Your Own Types
+Go is all about type. Meaning that once a type is defined, it cannot be changed. When we create our own types in Go, we give our types a 'type name' and specify and underlying data type. We cannot assign values that are stored as a different type in our created type, EVEN IF they share the same underlying type. To clarify:
+```go
+var a int
+type myDataType int
+var b myDataType
+
+func main() {
+  a = 34 // works
+  b = 21 // no problem
+  b = a // Doesn't work. variable 'a' is of type "int", not of type "myDataType"
+}
+```
+
+---
+### Conversion, Not Casting
+We can convert between types in Go if the __underlying types__ are compatible or if Go has a method for converting between the two types. For reference see the Go Spec on [Conversions](https://golang.org/ref/spec#Conversions).
