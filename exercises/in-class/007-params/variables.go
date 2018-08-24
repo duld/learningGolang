@@ -18,5 +18,9 @@ func foo(name string) int {
 		fmt.Println(err)
 	}
 
+	hexVal := fmt.Sprintf("%02x", 911)
+
+	fmt.Printf("%s\n", hexVal)
+
 	return i
 }
