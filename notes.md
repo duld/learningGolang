@@ -119,3 +119,31 @@ func main() {
 ---
 ### Conversion, Not Casting
 We can convert between types in Go if the __underlying types__ are compatible or if Go has a method for converting between the two types. For reference see the Go Spec on [Conversions](https://golang.org/ref/spec#Conversions).
+
+---
+### Strings
+
+#### Unicode
+An effort to create a single character set that included every reasonable writing system on the planet. In unicode, a letter maps to something called a 'code point'. A unicode code point looks like so U+0639, each code point is made up of two bytes and represented in hexidecimal.
+
+#### Unicode Encodings
+__UTF-8__:
+  * a variable width charater encoding
+  * capable of encode over a million valid points using 1-4 bytes.
+  * Only uses 1 byte for characters that don't go above 127, ANSI.
+
+### Numeric systems
+__Decimal Base 10:__ is how humans like to count: 0-9
+__Binary Base 2:__ is how computers store values: 0-1
+__Hexidecimal Base 16:__ is a condesed representation that is compatible with Binary.
+
+### Constants
+the __const__ keyword in go allows us to declare a variable as immutable. We cannot change its value after it is set.
+
+### Iota
+Within a constant declaration, the predeclared identifier iota represents successive untyped integer constants. Its value is the index of the respective ConstSpec in that constant declaration, starting at zero.
+
+__Iota will:__
+  * only work inside of a constant declaraction
+  * self increment, starting at 0
+  * reset to zero if used in another const declaration.
