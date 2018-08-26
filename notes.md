@@ -147,3 +147,58 @@ __Iota will:__
   * only work inside of a constant declaraction
   * self increment, starting at 0
   * reset to zero if used in another const declaration.
+
+---
+## Section 7 - Control flow
+### Loop - init, condition, post
+Most loops take the same shape
+* we describe a counter which will increment on each successful loop.
+* we write out an expression to test our counter against
+* finally we describe how our counter increments on each successful loop
+
+This style of loop structure is a classic for loop. Other loops include the forEach, while, do-while and for-In loops.
+
+
+### Nested loops
+We can nest looping structures inside on another. 
+
+### For Statement
+Go's for statement does a lot of heavy lifting when it comes to looping. Go's 'for' statement can simulate multiple styles of looping: while, for, for-in/for-each.
+
+### Standard For loop: for INIT; CONDITION; POST {}
+The most basic of the looping syntax is the initialize, condition, post structure; found in many other languages.
+
+### While loop: for {}
+if we do not provide any condition to the for loop, it will evaluate to 'true' or, continue looping. If we wish to exit the loop, we would have to use the 'break' keyword.
+
+### Break and Continue
+__break:__
+  * used to break out of a block of code
+
+__continue:__
+  * used to continue into the next iteration of a loop.
+
+### If Statement
+If statements in Go behave like in other c style languages. One thing of interest however is that you can have an Initialize statement to go along with the condition statement.
+```Go
+if y := true; y {
+  fmt.Println("Y is indeed true")
+}
+```
+### Switch Statement
+Go has a switch statement that is similar to other languages, with one exception. There is no default fallthrough behavior. You must specify that explicitly
+```Go
+switch {
+case false:
+  // code wont run
+case (2 == 4):
+  fallthrough
+  // code wont run
+case (3 == 3):
+  // code should run!
+case true:
+  // code wont run! Becuase we didn't specify the above case to fallthrough
+default:
+  // will catch any case that isn't matched.
+}
+```
