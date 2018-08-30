@@ -202,3 +202,9 @@ default:
   // will catch any case that isn't matched.
 }
 ```
+
+### Arrays
+Arrays hold a single type, and are a fixed length. Arrays like in other languages are zero based when indexing. However arrays in go have some differences
+  * Arrays are values. Assigning one array to another copies all the elements.
+  * In particular, if you pass an array to a function, it will receive a copy of the array, __not a pointer to it__.
+  * The size of an array is part of its type. The types __[10]int__ and __[20]int__ are distinct.
