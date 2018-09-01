@@ -208,3 +208,14 @@ Arrays hold a single type, and are a fixed length. Arrays like in other language
   * Arrays are values. Assigning one array to another copies all the elements.
   * In particular, if you pass an array to a function, it will receive a copy of the array, __not a pointer to it__.
   * The size of an array is part of its type. The types __[10]int__ and __[20]int__ are distinct.
+
+### Slice
+A slice is made up of three parts.
+* A pointer to an __underlying array__
+* the __length__ of the slice
+* the __capacity__ of the slice 
+ 
+The length of a slice represents the total indexable range of the slice. We can access and set values within that range. The capacity of a slice is the total size of the underlying array allocated for the slice. To add items to the slice past the length, we must call the built-in __append()__ function, passing in the slice we wish to append to. We can append a series of comma seperated values or an entire slice of a valid type using the __...__ operator.
+
+### Map
+A map is a key value store, where a unique key is used when looking up the value. Think Dictionary. The order of values in a map is not stored, and they can be returned in any order.
