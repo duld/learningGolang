@@ -219,3 +219,12 @@ The length of a slice represents the total indexable range of the slice. We can 
 
 ### Map
 A map is a key value store, where a unique key is used when looking up the value. Think Dictionary. The order of values in a map is not stored, and they can be returned in any order.
+
+### Struct
+A struct is a data structure that aggregates values of different types together.
+
+### Embedded Structs
+We can embed different types inside of our own struct. By including a type as a nameless parameter within another type, the exported parameters and methods defined on the embedded type are accessible through the ebedding type. The compiler deides on this by using a technique called __promotion__.
+
+* __promotion:__
+  * The exported properties and methods of the embedded type are promoted to the embedding type.
