@@ -228,3 +228,30 @@ We can embed different types inside of our own struct. By including a type as a 
 
 * __promotion:__
   * The exported properties and methods of the embedded type are promoted to the embedding type.
+  * Promoted fields act like ordinary fields of a struct except that they cannot be used as field names in composite literals of the struct.
+    * whats this mean?
+ 
+### Anonymous Structs
+We can create anonymous structs in go, by that I mean that we can define adata structure (struct) that is not named, it has no identifer. This would besimilar to how in JS or Python we can create Object/Dictionary literalswithout creating a Class to represent our data structure.
+```JavaScript
+// JavaScript
+let myData = { // this object isn't given a type name, but is still valid
+  keys : {} 
+  dataList : []
+  _rev : 23
+}
+```
+
+```Golang
+// Golang
+myData := struct{ // this describes the shape of our data structure
+  keys map[string]string
+  dataList []string,
+  _rev int
+}{ // now lets initialize it
+  keys : make(map[string]string),
+  dataList: make([]string, 10),
+  _rev: 23,
+} 
+```
+In the above example we are achieving very similar resulst. Go is a little more verbose in this example, but only because we must explicitly declare the types of the data to be housed. The dynamic nature of JS allows for more flexiblity but at the cost of storage and possibly performance. ./golang-apologist
