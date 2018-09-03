@@ -255,3 +255,25 @@ myData := struct{ // this describes the shape of our data structure
 } 
 ```
 In the above example we are achieving very similar resulst. Go is a little more verbose in this example, but only because we must explicitly declare the types of the data to be housed. The dynamic nature of JS allows for more flexiblity but at the cost of storage and possibly performance. ./golang-apologist
+
+## Functions
+### Function Syntax
+func (r receiver) identifier(parameters) (returns) {...}
+* __func:__ the go keyword used to declare a function
+* __receiver:__ who does this function belong to
+* __identifier:__ what is the name we will use to reference this function
+* __parameters:__ what arguments do we need to pass in, when calling the function
+* __returns:__ does the function return value(s), if so how many and of what type?
+
+### Variadic Parameter
+the variadic parameter allows a function to accept any number of valid arguments. We can also use the variadic parameter to apply the values of a slice as individual arguments in a function call. This behavior is similar to the __spread__ operator in JavaScript.
+
+```Golang
+var nums []interface{}
+nums = append(nums, 0, 1, 2)
+
+fmt.Println(nums) // is the same as
+fmt.Println(nums[0], nums[1], nums[2])
+```
+
+### Defer
