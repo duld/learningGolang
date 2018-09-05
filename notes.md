@@ -277,3 +277,26 @@ fmt.Println(nums[0], nums[1], nums[2])
 ```
 
 ### Defer
+defer can be used to execute a function after the enclosing function has finished execution. If we defer a multiple functions then the order of defered functions will be last in first out (LIFO). This can be usefull if we need to execute some kind of cleanup code at the end of our function, closing any IO or open connections etc.
+
+### Methods
+we can attatch methods to types in go. A method is just a function that is associated with a type, and as a result we can call the method from a variable of that type. There are two types of Methods: Methods that can manipulate the stored values/fields of the type and methods that only have a copy of that value. Any changes that the latter attempts will not be stored on the caller.
+
+If we want to mutate the data on the caller, then we must use Pointers
+```Golang
+type Person struct {
+  first, last string
+  age int
+  weight float64
+}
+
+func (p *Person) WorkOut() { // this function can modify the fields of Person
+  p.weight = p.weight - p.weight * 0.01
+  fmt.Println("Keep it up!")
+}
+
+func (p Person) GrowOld() { // this function will not modify the fields of Person
+  p.age = p.age * 5
+  fmt.Println("You should be dead!")
+}
+```
