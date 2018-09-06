@@ -300,3 +300,29 @@ func (p Person) GrowOld() { // this function will not modify the fields of Perso
   fmt.Println("You should be dead!")
 }
 ```
+
+### Pointers
+Pointers reference a location in memeory where a value is stored rather than the value itself. By using pointers we can update the values stored at the memory location. When using pointers we have two operators to keep in mind
+
+#### * - Pointer
+The asterisk character followed by the type of the stored value represents a pointer. If we want to create a variable that is of __type pointer to type__ we need to add an asterisk to the beginning of the variable type declaration
+```Golang
+var n int // this can hold values of type int
+var x *int // this can hold a pointer to an int
+```
+
+#### * - Dereference Operator
+The asterisk also serves double duty as the dereference operator when working with pointers. Dereferencing a pointer gives us access to the value the pointer points to.
+```Golang
+n := 33
+np := &n // we use the & to get the memory address of n
+y := *np // (*) will dereference the pointer 'np' and access the value it points to 'n'.
+```
+
+#### & - Address of Operator
+The & is used to find the address of a variable. If we use a the & on a pointer we get a pointer to a pointer of some type.
+```Golang
+n := 45
+np := &n // results in a pointer of int *int
+npp := &np // results in a pointer to a pointer of int **int
+```
