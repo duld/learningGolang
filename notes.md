@@ -326,3 +326,11 @@ n := 45
 np := &n // results in a pointer of int *int
 npp := &np // results in a pointer to a pointer of int **int
 ```
+
+### Interfaces
+Like a struct an interface is created using the __type__ keyword, followed by a name and the keyword __interface__. But instead of defining fields, we define a "method set". A method set is a list of methods that a type must have in order to "implement" the interface.
+
+http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go
+
+### Concurrency
+Making progress on more than one task simultaneously is known as concurrency. Go has rich support for concurrency using goroutines and channels.
