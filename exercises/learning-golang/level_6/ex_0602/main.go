@@ -14,7 +14,7 @@ import "fmt"
 func main() {
 	// tmp :=
 	fmt.Println("calling foo(),", foo([]int{1, 2, 3, 4, 5}...))
-	fmt.Println("calling bar(),", foo([]int{1, 20, 3, 4, 5}...))
+	fmt.Println("calling bar(),", bar([]int{1, 20, 3, 4, 5}))
 }
 
 func foo(nums ...int) int {
