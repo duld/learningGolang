@@ -302,7 +302,7 @@ func (p Person) GrowOld() { // this function will not modify the fields of Perso
 ```
 
 ### Pointers
-Pointers reference a location in memeory where a value is stored rather than the value itself. By using pointers we can update the values stored at the memory location. When using pointers we have two operators to keep in mind
+Pointers reference a location in memeory where a value is stored rather than the value itself. What the pointer is allowed to 'point' to is determined by the type of the pointer. The type of the pointer is important because it informs the computer about the size and type of the value to be read. By using pointers we can update the values stored at the memory location. When using pointers we have two operators to keep in mind
 
 #### * - Pointer
 The asterisk character followed by the type of the stored value represents a pointer. If we want to create a variable that is of __type pointer to type__ we need to add an asterisk to the beginning of the variable type declaration
@@ -334,3 +334,4 @@ http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go
 
 ### Concurrency
 Making progress on more than one task simultaneously is known as concurrency. Go has rich support for concurrency using goroutines and channels.
+
