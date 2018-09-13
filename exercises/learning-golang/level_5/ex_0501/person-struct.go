@@ -9,15 +9,27 @@ elements in the slice which stores the favorite flavors.
 */
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-// Person : a representation of a person
+	"github.com/duld/learningGolang/exercises/learning-golang/level_5/person"
+)
+
+//Person : a representation of a person
 type Person struct {
 	first, last string
 	favIceCream []string
 }
 
 func main() {
+	mp := person.LPerson{
+		First:       "J",
+		Last:        "m",
+		FavIceCream: []string{"a"},
+	}
+
+	fmt.Println(mp)
+
 	jm := Person{
 		first:       "Jeffrey",
 		last:        "McCrea",
