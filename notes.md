@@ -335,6 +335,36 @@ Like a struct an interface is created using the __type__ keyword, followed by a 
 
 http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go
 
+### Method sets
+A method set is a list of methods that a type must have in order to implement the interface. An Interface allows for a type of polymorphism in Go. 
+
+A method set for an interface and the methods on a type are not the same thing. Methods associated with a type (where a reciever is specified) can be called on a pointer to the type or on the type itself, without conflict. If however, a method set has a specific reciever format, then the type must follow the reciever format for that method in order for the type to be an implementation of the interface.
+
+What that means essentially:
+```Golang
+type People interface {
+  Greet()
+}
+
+type Person struct {
+  First, Last string
+}
+
+func (p *Person) Greet(){
+  fmt.Printf("Hello, my name is, %v %v. It is a pleasure to make your acquaintence.", p.First, p.Last)
+}
+
+jm := Person{"J", "M"}
+
+xpeople := []People{jm}
+xpeople[0].Greet() // will not run
+/*
+This example wont run because the person type's Greet method requires that we use a  pointer to person, not a person literal. YES it does implement the People interface, but no it wont be able to run because we are attempting to pass a literal to a method that requires a pointer to type Person.
+*/
+```
+
 ### Concurrency
 Making progress on more than one task simultaneously is known as concurrency. Go has rich support for concurrency using goroutines and channels.
+
+
 
