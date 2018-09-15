@@ -366,5 +366,10 @@ This example wont run because the person type's Greet method requires that we us
 ### Concurrency
 Making progress on more than one task simultaneously is known as concurrency. Go has rich support for concurrency using goroutines and channels.
 
+## JSON
 
+### Marshal
+the Marshal function is used to convert data in Go into JSON format. The resulting data is a slice of bytes.
 
+## Unmarshal
+To convert JSON back to Go, we need to pass valid JSON represented as a slice of bytes. The resulting Data structure needs to be either a struct that matches the JSON data or an interface{}.
