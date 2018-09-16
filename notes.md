@@ -386,4 +386,4 @@ The sort package contains functions to sort a collection of primitive types. If 
 [Person struct - example](https://play.golang.org/p/JiudEdQMoQl)
 
 ### Bcrypt
-
+bcrypt is an industry standard hashing algorithm for protecting sensitive data. Go has a library that implements a version of bcrypt.
