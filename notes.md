@@ -371,5 +371,8 @@ Making progress on more than one task simultaneously is known as concurrency. Go
 ### Marshal
 the Marshal function is used to convert data in Go into JSON format. The resulting data is a slice of bytes.
 
-## Unmarshal
-To convert JSON back to Go, we need to pass valid JSON represented as a slice of bytes. The resulting Data structure needs to be either a struct that matches the JSON data or an interface{}.
+### Unmarshal
+To convert JSON back to Go, we need to pass valid JSON represented as a slice of bytes. The resulting Data structure needs to be either a struct that matches the JSON data or an interface{}. Important, we must provide a memory address to where the unmarshaled JSON is going to be stored as our interface{}/struct argument.
+
+### Writer Interface
+The Writer interface is simple but widely used interface in Go. The interface defines one method 'Write' which takes a slice of bytes and returns the number of bytes written, and returns an error if if the write was stopped early due to a problem.
