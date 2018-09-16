@@ -376,3 +376,14 @@ To convert JSON back to Go, we need to pass valid JSON represented as a slice of
 
 ### Writer Interface
 The Writer interface is simple but widely used interface in Go. The interface defines one method 'Write' which takes a slice of bytes and returns the number of bytes written, and returns an error if if the write was stopped early due to a problem.
+
+### Sort
+The sort package contains functions to sort a collection of primitive types. If the user defined type implements three methods it can be sorted.
+* Len() int
+* Less(i, j int) bool
+* Swap(i, j int)
+
+[Person struct - example](https://play.golang.org/p/JiudEdQMoQl)
+
+### Bcrypt
+
