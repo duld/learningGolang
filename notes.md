@@ -387,3 +387,20 @@ The sort package contains functions to sort a collection of primitive types. If 
 
 ### Bcrypt
 bcrypt is an industry standard hashing algorithm for protecting sensitive data. Go has a library that implements a version of bcrypt.
+
+## Concurrency
+Concurrency is a way to build things. It is the composition of independantly executing processes. Concurrency is about __dealing__ with a lot of things at once and Parallelism is about __doing__ a lot of things at once. These two things are similar but not the same.
+
+Concurrency is about structuring things so that maybe they can be done in parallel, but parallelism is not the goal. Having a good structure is the goal.
+
+
+### Wait Groups
+sync.WaitGroup
+WaitGroup.Add()
+WaitGroup.Done()
+
+### Race Condition
+
+### Mutex
+
+### Atomic
