@@ -22,20 +22,21 @@ func init() {
 
 func main() {
 	// fileA
+	fmt.Println("fileA")
 	err := tpl.ExecuteTemplate(os.Stdout, "fileA.gohtml", nil)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("\n")
 
 	// fileB
+	fmt.Println("\n\nfileB")
 	err = tpl.ExecuteTemplate(os.Stdout, "fileB.gohtml", nil)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("\n")
 
 	// fileC
+	fmt.Println("\n\nfileC")
 	err = tpl.ExecuteTemplate(os.Stdout, "fileC.gohtml", nil)
 	if err != nil {
 		panic(err)
