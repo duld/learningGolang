@@ -5,6 +5,7 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"os"
 )
 
@@ -26,5 +27,8 @@ func main() {
 	}
 
 	// execute index.html
-	tpl.ExecuteTemplate(os.Stdout, "index.gohtml", books)
+	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", books)
+	if err != nil {
+		log.Fatal("Sorry, our server is not so great.")
+	}
 }
