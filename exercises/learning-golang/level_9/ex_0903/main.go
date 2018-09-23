@@ -22,7 +22,6 @@ import (
 )
 
 var wg sync.WaitGroup
-var mx sync.Mutex
 
 func main() {
 	r := rand.Intn(30)
@@ -32,12 +31,10 @@ func main() {
 
 	for i := 0; i < loopLimit; i++ {
 		go func() {
-			mx.Lock()
 			loc := total
 			time.Sleep(time.Duration(r) * time.Millisecond)
 			loc++
 			total = loc
-			mx.Unlock()
 			wg.Done()
 		}()
 	}
