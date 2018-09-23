@@ -400,7 +400,14 @@ WaitGroup.Add()
 WaitGroup.Done()
 
 ### Race Condition
+A race condition is an undesirable situation that occurs when a device or system attempts to perform two or more operations a the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly. It becomes a bug when the events do not happen in the order the programmer intended.
 
 ### Mutex
+Mutual Exclusion or mutex, a Golang provides a data structure that can lock chunks of code from being manipulated by other go routines. 
 
 ### Atomic
+Package atomic provides low-level atomic memory primitives useful for implementing synchronization algorithms.
+
+These functions require great care to be used correctly. Except for special, low-level applications, synchronization is better done with channels or the facilities of the sync package. Share memory by communicating; don't communicate by sharing memory.
+
+Atomic allows us to precisely read and write to a location in memory.
