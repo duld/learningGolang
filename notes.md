@@ -421,3 +421,30 @@ By default sends and receives block until both the sender and reciver are ready.
 bufio
 log
 net/http
+
+### Comma Ok idiom
+Sometimes you need to distinguish a smissing entry from a zero value. Is there an entry for "UTC" or is that 0, because it's not in th emap at all? You can descriminate with a form of multiple assignment.
+
+```Golang
+var seconds int
+var ok bool
+seconds, ok = timeZone[tz]
+```
+
+For obvious reasons this is called the "comma ok" idiom. In this example, if tz is present, seconds will be set appropriately and ok will be true; if not, seconds will be set to zero and ok will be false. Here's a function that puts it together with a nice error report.
+```Golang
+func offset(tz string) int {
+    if seconds, ok := timeZone[tz]; ok {
+        return seconds
+    }
+    log.Println("unknown time zone:", tz)
+    return 0
+}
+```
+### Fan Out
+Is the idea of spreading work out across multiple functions concurrently. For example, you can spin up 'n' number of functions using the 'go' keyword to put the function on a seperate process.
+
+### Fan In
+Fan in is the idea of doing a bunch of work at the same time, and then aggregating the results of that work at a single source.
+
+### Context
