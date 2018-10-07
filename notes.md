@@ -448,3 +448,65 @@ Is the idea of spreading work out across multiple functions concurrently. For ex
 Fan in is the idea of doing a bunch of work at the same time, and then aggregating the results of that work at a single source.
 
 ### Context
+[Notes from Golang UK Conference 2016 - A Beginner's Guide to Context](https://www.youtube.com/watch?v=r4Mlm6qEWRs)
+
+Problem:
+* In Go servers, each new request spawns it's own goroutine
+* Goroutines don't have any 'thread local' state
+* Your code is responsible for things like cancellation, time outs and data
+
+Solution:
+* The __context__ package provides a standard way to solve the problems of managing state during a request.
+
+__context__ addresses:
+* Request scoped data
+* Cancellation, Deadlines & Timeouts
+* It is safe for concurrent use
+
+__Ref__: Cancellation, Context, and Pluming by Sameer Ajmani(GothamGo 2014)
+
+A context should be concerned with holding relevant state information regarding the request. This includes headers, session data, security credentials.
+
+A __context__ is made up four parts:
+* Done() __<-chan struct{}__
+  * returns a channel that is CLOSED when this context is canceled or times out.
+* Err() __error__
+  * Err indicates why this context was canceled, after the Done channel is closed.
+* Deadline() (deadline __time.Time__, ok __bool__)
+  * Deadline returns the time when this Context will be canceled, if any.
+* Value(key __interface{}__)
+  * Value returns the value associated with key or nil if none.
+
+## Errors
+
+### Checking Errors
+Functions in go can have multiple return values. We can return an error from a function when something goes wrong. Generally the right-most return of a function is the error, if an error is indeed returned. We can check if an error was indeed returned after the function call ends.
+```Golang
+retVal, err := usefulFunc(someValue)
+if err != nil { // if an error was returned, the value will not be 'nil'
+  fmt.Println(err)
+}
+```
+
+### Printing & Logging
+When we print, using fmt.Println() we direct the output to standard out (os.Stdout). We can have this same behavior when using log aswell. But log by default contians more information than regular printing and is safer when using multiple goroutines.
+
+Logging [taken from stackoverflow](https://stackoverflow.com/questions/41389933/when-to-use-log-over-fmt-for-debugging-and-printing-error/41390023):
+* The log functions print to stderr by default and can be directed to an arbitrary writer. The fmt.Printf functions prints to stdout.
+* The log functions can print timestamp, source code location and other info.
+* The log functions and fmt.Printf are both thread safe, but concurrent writes by fmt.Printf above an OS dependent size can be interleaved.
+
+__log.Fatalln()__
+* uses os.Exit() to quit the application, deferred function calls will not run.
+
+__log.Panicln()__
+* deferred functions will run
+* we can recover from a 'panic'
+
+__Panic:__ is a built-in function that stops the ordinary flow of control and begins panicking. When the function F calls panic, execution of F stops, any deferred functions in F are executed normally, and then F returns to its caller. To the caller, F then behaves like a call to panic. The process continues up the stack until all functions in the current goroutine have returned, at which point the program crashes. Panics can be initiated by invoking panic directly. They can also be caused by runtime errors, such as out-of-bounds array accesses.
+
+__Recover:__ is a built-in function that regains control of a panicking goroutine. __Recover is only useful inside deferred functions__. During normal execution, a call to recover will return nil and have no other effect. If the current goroutine is panicking, a call to recover will capture the value given to panic and resume normal execution.
+
+
+### Errors with Info
+We can use the __errors.New()__ call to add our own information to an error. The method __errors.New()__ returns a function called __Error()__ which returns a string
