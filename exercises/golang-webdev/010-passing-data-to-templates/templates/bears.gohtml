@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1><a href="/">Home</a></h1>
+  <h1><a href="/about">About</a></h1>
+  <h1>Bears</h1>
+  {{ if . }}
+  {{/* if we are passed data start parsing*/}}
+    {{ if gt .NumBears 0}}
+      <h2>There are reports of at least {{ .NumBears }} bear(s) spotted since last Tuesday</h2>
+      <h3>Location: {{ .ForestName }}</h2>
+      <p>Bear species spotted so far</p>
+      <ul>
+      {{ range $i, $v := .BearSpecies }}
+        <li>{{ $v }}</li>
+      {{end}}
+      </ul>
+      {{ if eq .PreparedToKill true}}
+        <p>Please be advised, these bears are armed and dangerous</p>
+        <p>There have been a total of {{ len .BearAttacks}} bear attacks so far</p>
+        <p>Missing campers
+        <ul>
+          {{range $k, $kv := .BearAttacks }}
+            <li>{{$k}}</li>
+          {{end}}
+        </ul>
+        </p>
+      {{else}}
+        <p>Just go and pet the Gosh Darn things!</p>
+      {{end}}
+    {{end}}
+
+  {{else}}
+  <h2>Sorry</h2>
+  <p>We don't have any interesting information about bears to share</p>
+  {{end}}
+</body>
+</html>
