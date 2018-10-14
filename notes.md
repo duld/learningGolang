@@ -510,3 +510,63 @@ __Recover:__ is a built-in function that regains control of a panicking goroutin
 
 ### Errors with Info
 We can use the __errors.New()__ call to add our own information to an error. The method __errors.New()__ returns a function called __Error()__ which returns a string
+
+## Testing
+Testing in go requires:
+* A file that has '_test' as a suffix
+* testing functions in the file that start with the prefix 'Test'
+  * these functions must take in a single argument of type __*testing.T__
+* run go test to execute your tests.
+
+```Golang
+func TestTimeConsuming(t *testing.T) {
+    if testing.Short() {
+        t.Skip("skipping test in short mode.")
+    }
+    ...
+}
+```
+
+## Golint
+Go lint is a command line tool that offers linting suggestions on your files. You can pass a directory for the linter to check
+
+## Benchmarking
+Benchmarking in go requires:
+* A file that has a '_test' as a suffix.
+* A function in the file that start with the prefix 'Benchmark'.
+  * these functions take in a single argument of type __*testing.B__.
+  * Go must call the function __b.N__ number of times.
+* Inside the function a forloop must be written as so:
+  * __for i := 0; i < b.N; i++ { FunctionCall(Args) }__
+
+```Golang
+func BenchmarkHello(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        fmt.Sprintf("hello")
+    }
+}
+```
+
+## Coverage
+Coverage has to do testing your code and how much of your code is actually 'covered' by tests. Are you testing all of the functions in your package? Are all branches of execution tested for as well?
+
+### Coverage Commands:
+* __go test -cover__
+  * checks the coverage of tests against the functions in a package.
+* __go tool cover -func=coverage.out__
+  * automatically sets the cover flag to true.
+  * however, the results are saved to a named file.
+* __go tool cover -html=coverage.out__
+  * when the command is run, a browser window pops up, showing the covered (green), uncovered (red), and uninstrumented (grey) source. Here's a screen dump.
+
+## BET - remember to bet
+BET stands for Benchmark, Example and Test your code. Remember when writing documentation and tests for your code to include all three of these actions.
+
+Benchmark
+  * Check that your code is performant. Is it performant? How sure are you?
+Example
+  * Give an example of how your code is to be executed, this example will be used in your documentation
+Test
+  * Test that your code behaves in the way you expect it to. 
+  * Tests keep your code honest. 
+  * Test it multiple times with different values.
