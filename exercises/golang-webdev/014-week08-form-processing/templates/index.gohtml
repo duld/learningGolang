@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<h1>Index</h1>
+
+<form action="" method="post">
+  <label for="name">Name:</label><br>
+  <input type="text" name="name" required><br>
+
+  <label for="occupation">Occupation:</label><br>
+  <input type="text" name="occupation" required><br>
+
+  <label for="age">Age</label><br>
+  <input type="text" name="age" required><br>
+  <button type="submit">Submit</button>
+</form>
+
+{{ if . }}
+<h2>Previous Submission</h2>
+  <ul>
+    <li>Name:&nbsp;{{ .Name }}</li>
+    <li>Occupation:&nbsp;{{ .Occupation }}</li>
+    <li>Age:&nbsp;{{ .Age }}</li>
+  </ul>
+{{ end }}
+
+</body>
+</html>
