@@ -1,2 +1,3 @@
 *.exe
 exercises/golang-webdev/010-passing-data-to-templates/templates/bones.html
+exercises/golang-webdev/inclass-warmup/
