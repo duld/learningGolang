@@ -26,10 +26,6 @@ const (
 	dbname   = "bookshelf"
 )
 
-type Book struct {
-	name string
-}
-
 func main() {
 	// Postgres connection string.
 	connStr := fmt.Sprintf(
